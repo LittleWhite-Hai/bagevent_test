@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="bagevent.mapper.UserMapper">
+    <select id="list" resultType="User">
+        select * from   user
+    </select>
+    <select id="get" resultType="User">
+        select * from   user where user_name=#{name}
+    </select>
+    <insert id="insert" keyColumn="user_id" keyProperty="user_id" parameterType="bagevent.pojo.User" useGeneratedKeys="true">
+        insert into user (user_name,email,cellphone, password)
+        values (#{user_name,jdbcType=VARCHAR} ,null,#{cellphone,jdbcType=VARCHAR},#{password,jdbcType=VARCHAR})
+    </insert>
+</mapper>

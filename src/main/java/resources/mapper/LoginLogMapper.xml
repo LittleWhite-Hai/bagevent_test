@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="bagevent.mapper.LoginLogMapper">
+    <select id="list" resultType="LoginLog" >
+        select * from   userloginlog where user_id=#{uid}
+    </select>
+
+    <insert id="add" keyColumn="login_id" keyProperty="login_id" parameterType="bagevent.pojo.LoginLog" useGeneratedKeys="true">
+        insert into userloginlog (user_id,login_time,login_ip)
+        values (#{user_id,jdbcType=VARCHAR} ,#{login_time,jdbcType=VARCHAR},#{login_ip,jdbcType=VARCHAR})
+    </insert>
+</mapper>
